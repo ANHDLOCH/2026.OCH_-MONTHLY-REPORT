@@ -1,33 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
-<title>2026.OCH_ MONTHLY REPORT</title>
-<script>
-function checkPassword() {
-const password = document.getElementById("password").value;
-const correctPassword = "OCH2026"; // 🔒 Thay đổi mật khẩu tại đây
-if (password === correctPassword) {
-document.getElementById("login").style.display = "none";
-document.getElementById("report").style.display = "block";
-} else {
-alert("Sai mật khẩu rồi sếp ơi!");
-}
-}
-</script>
+    <meta charset="UTF-8">
+    <title>2026.OCH_ MONTHLY REPORT</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; margin: 0; background-color: #f4f4f4; }
+        #login { margin-top: 100px; padding: 20px; background: white; display: inline-block; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        input { padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+        button { padding: 10px 20px; background: #0078d4; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        /* Quan trọng: Cho báo cáo tràn màn hình */
+        #report { display: none; width: 100vw; height: 100vh; }
+        iframe { width: 100%; height: 100%; border: none; }
+    </style>
+    <script>
+        function checkPassword() {
+            const password = document.getElementById("password").value;
+            const correctPassword = "OCH2026"; 
+            if (password === correctPassword) {
+                document.getElementById("login").style.display = "none";
+                document.getElementById("report").style.display = "block";
+            } else {
+                alert("Sai mật khẩu rồi sếp ơi!");
+            }
+        }
+    </script>
 </head>
-<body style="font-family: sans-serif; text-align: center; margin-top: 50px">
+<body>
 
 <div id="login">
-<h2>Vui lòng nhập mật khẩu để xem báo cáo</h2>
-<input type="password" id="password" placeholder="Mật khẩu" />
-<button onclick="checkPassword()">Truy cập</button>
+    <h2>OCH REPORT</h2>
+    <p>Vui lòng nhập mật khẩu để xem báo cáo</p>
+    <input type="password" id="password" placeholder="Mật khẩu" onkeypress="if(event.keyCode==13) checkPassword()"/>
+    <button onclick="checkPassword()">Truy cập</button>
 </div>
 
-<div id="report" style="display:none;">
-<h2>2026.OCH_ MONTHLY REPORT</h2>
-<iframe width="100%" height="600px"
-src="https://app.powerbi.com/view?r=eyJrIjoiOWU2OTkzNjMtM2RlMC00ZjQ0LTg5YTAtZGMwYTY5OWU2NjA3IiwidCI6IjE4MmVkZDhiLTQ5YjgtNGFmOC1iNWU0LWY5ZWRmMDhhZTk2NyIsImMiOjEwfQ%3D%3D"
-frameborder="0" allowFullScreen="true"></iframe>
+<div id="report">
+    <iframe 
+        src="https://app.powerbi.com/view?r=eyJrIjoiOWU2OTkzNjMtM2RlMC00ZjQ0LTg5YTAtZGMwYTY5OWU2NjA3IiwidCI6IjE4MmVkZDhiLTQ5YjgtNGFmOC1iNWU0LWY5ZWRmMDhhZTk2NyIsImMiOjEwfQ%3D%3D" 
+        frameborder="0" 
+        allowFullScreen="true">
+    </iframe>
 </div>
 
 </body>
