@@ -5,33 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* Giao diện nền */
-        body { font-family: 'Segoe UI', Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f0f2f5; margin: 0; overflow: hidden; }
-        
-        /* Khung đăng nhập */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f0f2f5; margin: 0; overflow: hidden; }
         .box { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); text-align: center; width: 320px; z-index: 100; }
-        h2 { color: #0078d4; margin-bottom: 10px; font-size: 24px; }
-        p { color: #666; margin-bottom: 25px; font-size: 14px; }
-        
-        /* Ô nhập mật khẩu */
-        input { padding: 12px; width: 100%; border: 2px solid #ddd; border-radius: 8px; margin-bottom: 20px; box-sizing: border-box; font-size: 16px; outline: none; transition: 0.3s; }
+        h2 { color: #0078d4; margin-bottom: 10px; }
+        input { padding: 12px; width: 100%; border: 2px solid #ddd; border-radius: 8px; margin-bottom: 20px; box-sizing: border-box; font-size: 16px; outline: none; }
         input:focus { border-color: #0078d4; }
-        
-        /* Nút truy cập */
         button { padding: 12px; width: 100%; background: #0078d4; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: bold; transition: 0.3s; }
-        button:hover { background: #005a9e; transform: translateY(-2px); }
-        
-        /* Vùng hiển thị báo cáo */
-        #reportArea { display: none; width: 100vw; height: 100vh; background: white; }
+        button:hover { background: #005a9e; }
+        #reportArea { display: none; width: 100vw; height: 100vh; }
         iframe { width: 100%; height: 100%; border: none; }
     </style>
 </head>
 <body>
-
     <div id="loginGate" class="box">
         <h2>OCH REPORT</h2>
-        <p>Hệ thống báo cáo kết quả kinh doanh</p>
-        <input type="password" id="passInput" placeholder="Nhập mật khẩu truy cập..." onkeypress="handleKeyPress(event)">
+        <p style="color: #666;">Vui lòng nhập mật khẩu truy cập</p>
+        <input type="password" id="passInput" placeholder="Mật khẩu..." onkeypress="if(event.keyCode==13) checkPass()">
         <button onclick="checkPass()">ĐĂNG NHẬP</button>
     </div>
 
@@ -42,25 +31,13 @@
     </div>
 
     <script>
-        // Mật khẩu truy cập
-        const MAT_KHAU_CHUAN = "OCH2026";
-
         function checkPass() {
-            var input = document.getElementById("passInput").value;
-            if (input === MAT_KHAU_CHUAN) {
+            var p = document.getElementById("passInput").value;
+            if (p === "OCH2026") { 
                 document.getElementById("loginGate").style.display = "none";
                 document.getElementById("reportArea").style.display = "block";
-                document.body.style.background = "white"; // Đổi nền về trắng cho báo cáo
             } else {
-                alert("Mật khẩu không đúng. Vui lòng kiểm tra lại!");
-                document.getElementById("passInput").value = "";
-            }
-        }
-
-        // Cho phép nhấn Enter để đăng nhập
-        function handleKeyPress(e) {
-            if (e.keyCode === 13) {
-                checkPass();
+                alert("Mật khẩu không đúng!");
             }
         }
     </script>
