@@ -1,39 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
     <title>Báo Cáo Nội Bộ OCH</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #e9ecef; margin: 0; }
-        .box { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; width: 350px; }
-        h2 { color: #0078d4; margin-bottom: 20px; }
-        input { padding: 12px; width: 100%; border: 1px solid #ced4da; border-radius: 6px; margin-bottom: 20px; box-sizing: border-box; font-size: 16px; }
-        button { padding: 12px; width: 100%; background: #0078d4; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: bold; transition: 0.3s; }
-        button:hover { background: #005a9e; }
+        /* Giao diện nền */
+        body { font-family: 'Segoe UI', Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f0f2f5; margin: 0; overflow: hidden; }
+        
+        /* Khung đăng nhập */
+        .box { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); text-align: center; width: 320px; z-index: 100; }
+        h2 { color: #0078d4; margin-bottom: 10px; font-size: 24px; }
+        p { color: #666; margin-bottom: 25px; font-size: 14px; }
+        
+        /* Ô nhập mật khẩu */
+        input { padding: 12px; width: 100%; border: 2px solid #ddd; border-radius: 8px; margin-bottom: 20px; box-sizing: border-box; font-size: 16px; outline: none; transition: 0.3s; }
+        input:focus { border-color: #0078d4; }
+        
+        /* Nút truy cập */
+        button { padding: 12px; width: 100%; background: #0078d4; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: bold; transition: 0.3s; }
+        button:hover { background: #005a9e; transform: translateY(-2px); }
+        
+        /* Vùng hiển thị báo cáo */
+        #reportArea { display: none; width: 100vw; height: 100vh; background: white; }
+        iframe { width: 100%; height: 100%; border: none; }
     </style>
 </head>
 <body>
+
     <div id="loginGate" class="box">
         <h2>OCH REPORT</h2>
-        <p style="color: #666;">Vui lòng nhập mật khẩu</p>
-        <input type="password" id="passInput" placeholder="Mật khẩu là gì nhỉ?">
-        <button onclick="checkPass()">TRUY CẬP</button>
+        <p>Hệ thống báo cáo kết quả kinh doanh</p>
+        <input type="password" id="passInput" placeholder="Nhập mật khẩu truy cập..." onkeypress="handleKeyPress(event)">
+        <button onclick="checkPass()">ĐĂNG NHẬP</button>
     </div>
 
-    <div id="reportArea" style="display:none; width:100%; height:100vh;">
-        <iframe title="2026.OCH_ MONTHLY REPORT" width="100%" height="100%" src="https://app.powerbi.com/view?r=eyJrIjoiOWU2TkzNjMtM2R1MC00ZjQ0LTg5YTAtZGMwYTY5OWU2NjA3IiwidCI6IjE4MmVzZDIhLTQ5YjgtNGFmOC1iNWU0LWY5ZWRmMDhhZTk2NyIsImMiOjEifQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+    <div id="reportArea">
+        <iframe title="2026.OCH_ MONTHLY REPORT" 
+                src="https://app.powerbi.com/view?r=eyJrIjoiOWU2OTkzNjMtM2RlMC00ZjQ0LTg5YTAtZGMwYTY5OWU2NjA3IiwidCI6IjE4MmVkZDhiLTQ5YjgtNGFmOC1iNWU0LWY5ZWRmMDhhZTk2NyIsImMiOjEwfQ%3D%3D" 
+                allowFullScreen="true"></iframe>
     </div>
 
     <script>
+        // Mật khẩu truy cập
+        const MAT_KHAU_CHUAN = "OCH2026";
+
         function checkPass() {
-            var p = document.getElementById("passInput").value;
-            // MẬT KHẨU CỦA BẠN LÀ CHỮ TRONG NGOẶC DƯỚI ĐÂY
-            if (p === "OCH2026") { 
+            var input = document.getElementById("passInput").value;
+            if (input === MAT_KHAU_CHUAN) {
                 document.getElementById("loginGate").style.display = "none";
                 document.getElementById("reportArea").style.display = "block";
+                document.body.style.background = "white"; // Đổi nền về trắng cho báo cáo
             } else {
-                alert("Sếp ơi, mật khẩu sai rồi ạ!");
+                alert("Mật khẩu không đúng. Vui lòng kiểm tra lại!");
+                document.getElementById("passInput").value = "";
+            }
+        }
+
+        // Cho phép nhấn Enter để đăng nhập
+        function handleKeyPress(e) {
+            if (e.keyCode === 13) {
+                checkPass();
             }
         }
     </script>
