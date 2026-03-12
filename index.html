@@ -1,1 +1,41 @@
-<iframe title="2026.OCH_ MONTHLY REPORT" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiOWU2OTkzNjMtM2RlMC00ZjQ0LTg5YTAtZGMwYTY5OWU2NjA3IiwidCI6IjE4MmVkZDhiLTQ5YjgtNGFmOC1iNWU0LWY5ZWRmMDhhZTk2NyIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Báo Cáo Nội Bộ OCH</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #e9ecef; margin: 0; }
+        .box { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; width: 350px; }
+        h2 { color: #0078d4; margin-bottom: 20px; }
+        input { padding: 12px; width: 100%; border: 1px solid #ced4da; border-radius: 6px; margin-bottom: 20px; box-sizing: border-box; font-size: 16px; }
+        button { padding: 12px; width: 100%; background: #0078d4; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: bold; transition: 0.3s; }
+        button:hover { background: #005a9e; }
+    </style>
+</head>
+<body>
+    <div id="loginGate" class="box">
+        <h2>OCH REPORT</h2>
+        <p style="color: #666;">Vui lòng nhập mật khẩu</p>
+        <input type="password" id="passInput" placeholder="Mật khẩu là gì nhỉ?">
+        <button onclick="checkPass()">TRUY CẬP</button>
+    </div>
+
+    <div id="reportArea" style="display:none; width:100%; height:100vh;">
+        <iframe title="2026.OCH_ MONTHLY REPORT" width="100%" height="100%" src="https://app.powerbi.com/view?r=eyJrIjoiOWU2TkzNjMtM2R1MC00ZjQ0LTg5YTAtZGMwYTY5OWU2NjA3IiwidCI6IjE4MmVzZDIhLTQ5YjgtNGFmOC1iNWU0LWY5ZWRmMDhhZTk2NyIsImMiOjEifQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+    </div>
+
+    <script>
+        function checkPass() {
+            var p = document.getElementById("passInput").value;
+            // MẬT KHẨU CỦA BẠN LÀ CHỮ TRONG NGOẶC DƯỚI ĐÂY
+            if (p === "OCH2026") { 
+                document.getElementById("loginGate").style.display = "none";
+                document.getElementById("reportArea").style.display = "block";
+            } else {
+                alert("Sếp ơi, mật khẩu sai rồi ạ!");
+            }
+        }
+    </script>
+</body>
+</html>
