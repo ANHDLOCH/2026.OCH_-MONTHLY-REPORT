@@ -1,61 +1,34 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html>
 <head>
-    <title>Báo Cáo Nội Bộ OCH</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        /* Giao diện nền chuyên nghiệp */
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f0f2f5; margin: 0; overflow: hidden; }
-        
-        /* Khung đăng nhập */
-        .box { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); text-align: center; width: 320px; z-index: 100; transition: 0.3s; }
-        h2 { color: #0078d4; margin-bottom: 10px; font-size: 24px; }
-        p { color: #666; margin-bottom: 25px; font-size: 14px; }
-        
-        /* Ô nhập mật khẩu */
-        input { padding: 12px; width: 100%; border: 2px solid #ddd; border-radius: 8px; margin-bottom: 20px; box-sizing: border-box; font-size: 16px; outline: none; transition: 0.3s; }
-        input:focus { border-color: #0078d4; box-shadow: 0 0 8px rgba(0,120,212,0.2); }
-        
-        /* Nút đăng nhập */
-        button { padding: 12px; width: 100%; background: #0078d4; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: bold; transition: 0.3s; }
-        button:hover { background: #005a9e; transform: translateY(-2px); }
-        
-        /* Vùng hiển thị báo cáo Power BI */
-        #reportArea { display: none; width: 100vw; height: 100vh; background: white; }
-        iframe { width: 100%; height: 100%; border: none; }
-    </style>
+<title>2026.OCH_ MONTHLY REPORT</title>
+<script>
+function checkPassword() {
+const password = document.getElementById("password").value;
+const correctPassword = "OCH2026"; // 🔒 Thay đổi mật khẩu tại đây
+if (password === correctPassword) {
+document.getElementById("login").style.display = "none";
+document.getElementById("report").style.display = "block";
+} else {
+alert("Sai mật khẩu rồi sếp ơi!");
+}
+}
+</script>
 </head>
-<body>
+<body style="font-family: sans-serif; text-align: center; margin-top: 50px">
 
-    <div id="loginGate" class="box">
-        <h2>OCH REPORT</h2>
-        <p>Hệ thống báo cáo kinh doanh 2026</p>
-        <input type="password" id="passInput" placeholder="Nhập mật khẩu..." onkeypress="if(event.keyCode==13) checkPass()">
-        <button onclick="checkPass()">TRUY CẬP</button>
-    </div>
+<div id="login">
+<h2>Vui lòng nhập mật khẩu để xem báo cáo</h2>
+<input type="password" id="password" placeholder="Mật khẩu" />
+<button onclick="checkPassword()">Truy cập</button>
+</div>
 
-    <div id="reportArea">
-        <iframe title="2026.OCH_ MONTHLY REPORT" 
-                src="https://app.powerbi.com/view?r=eyJrIjoiOWU2OTkzNjMtM2RlMC00ZjQ0LTg5YTAtZGMwYTY5OWU2NjA3IiwidCI6IjE4MmVkZDhiLTQ5YjgtNGFmOC1iNWU0LWY5ZWRmMDhhZTk2NyIsImMiOjEwfQ%3D%3D" 
-                allowFullScreen="true"></iframe>
-    </div>
+<div id="report" style="display:none;">
+<h2>2026.OCH_ MONTHLY REPORT</h2>
+<iframe width="100%" height="600px"
+src="copy link vào đây"
+frameborder="0" allowFullScreen="true"></iframe>
+</div>
 
-    <script>
-        // MẬT KHẨU BẠN SẼ GỬI CHO SẾP
-        const MAT_KHAU_TRUY_CAP = "OCH2026";
-
-        function checkPass() {
-            var input = document.getElementById("passInput").value;
-            if (input === MAT_KHAU_TRUY_CAP) {
-                document.getElementById("loginGate").style.display = "none";
-                document.getElementById("reportArea").style.display = "block";
-                document.body.style.background = "white"; 
-            } else {
-                alert("Sếp ơi, sai mật khẩu rồi ạ!");
-                document.getElementById("passInput").value = "";
-            }
-        }
-    </script>
 </body>
 </html>
